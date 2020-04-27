@@ -16,6 +16,10 @@ export default function Login() {
     navigation.navigate('Register');
   }
 
+  function navigateForgotPassword() {
+    navigation.navigate('ForgotPassword');
+  }
+
   function handleLogin() {
     firebase
       .auth()
@@ -40,6 +44,7 @@ export default function Login() {
           placeholder="Email"
           keyboardType="email-address"
           textAlignVertical="center"
+          autoCapitalize="none"
           onChangeText={text => {setEmail(text)}}
         />
       </View>
@@ -58,7 +63,8 @@ export default function Login() {
           onChangeText={text => {setPassword(text)}}
         />
       </View>
-      <TouchableOpacity style={styles.viewForgot}>
+      
+      <TouchableOpacity onPress={navigateForgotPassword} style={styles.viewForgot}>
         <Text style={styles.forgot}>Forgot Password?</Text>
       </TouchableOpacity>
 

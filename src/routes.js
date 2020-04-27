@@ -7,6 +7,7 @@ const Stack = createStackNavigator();
 
 import Home from './pages/Home';
 import Login from './pages/Login';
+import ForgotPassword from './pages/ForgotPassword';
 import Register from './pages/Register';
 
 export default function Routes() {
@@ -23,6 +24,7 @@ export default function Routes() {
             <>
               <Stack.Screen name="Login" component={Login}/>
               <Stack.Screen name="Register" component={Register}/>            
+              <Stack.Screen name="ForgotPassword" component={ForgotPassword}/>            
             </>
           )
         }
