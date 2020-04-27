@@ -25,6 +25,10 @@ export default StyleSheet.create({
     marginBottom: 16,
   },
 
+  textInput: {
+    width: '100%'
+  },
+
   iconInput: {
     marginRight: 8,
   },
@@ -51,5 +55,10 @@ export default StyleSheet.create({
   textSignUp: {
     fontWeight: 'bold',
     color: '#AF52DE'
+  },
+
+  error: {
+    color: 'red',
+    marginHorizontal: 40
   }
 })
