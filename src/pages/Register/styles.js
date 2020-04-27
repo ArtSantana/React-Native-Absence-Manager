@@ -22,6 +22,11 @@ export default StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: '#C7C7CD',
     marginBottom: 16,
+    justifyContent: 'space-between',
+  },
+
+  passwordInput: {
+    width: '80%'
   },
 
   textInput: {

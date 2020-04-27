@@ -11,6 +11,8 @@ export default function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const [eyeColor, setEyeColor] = useState('#C7C7CD');
+  const [showPassword, setShowPassword] = useState(true);
 
   function navigateSignUp() {
     navigation.navigate('Register');
@@ -18,6 +20,11 @@ export default function Login() {
 
   function navigateForgotPassword() {
     navigation.navigate('ForgotPassword');
+  }
+
+  function togglePassword() {
+    showPassword ? setEyeColor('#8E8E93') : setEyeColor('#C7C7CD');
+    setShowPassword(!showPassword);
   }
 
   function handleLogin() {
@@ -57,10 +64,17 @@ export default function Login() {
           style={styles.iconInput}
         />
         <TextInput 
-          style={styles.textInput}
+          style={styles.passwordInput}
           placeholder="Password"
-          secureTextEntry={true}
+          secureTextEntry={showPassword}
+          autoCapitalize="none"
           onChangeText={text => {setPassword(text)}}
+        />
+        <Icon 
+          name="eye"
+          size={16}
+          color={eyeColor}
+          onPress={togglePassword}
         />
       </View>
       

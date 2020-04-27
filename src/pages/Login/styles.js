@@ -23,10 +23,15 @@ export default StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: '#C7C7CD',
     marginBottom: 16,
+    justifyContent: 'space-between'
   },
 
   textInput: {
     width: '100%'
+  },
+
+  passwordInput: {
+    width: '80%'
   },
 
   iconInput: {

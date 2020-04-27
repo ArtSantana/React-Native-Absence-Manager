@@ -11,9 +11,16 @@ export default function Register() {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [error, setError] = useState('');
+  const [eyeColor, setEyeColor] = useState('#C7C7CD');
+  const [showPassword, setShowPassword] = useState(true);
   
   function checkPasswords() {
     
+  }
+
+  function togglePassword() {
+    showPassword ? setEyeColor('#8E8E93') : setEyeColor('#C7C7CD');
+    setShowPassword(!showPassword);
   }
 
   return (
@@ -62,11 +69,18 @@ export default function Register() {
           style={styles.iconInput}
         />
         <TextInput 
-          style={styles.textInput}
+          style={styles.passwordInput}
           placeholder="Password"
           textAlignVertical="center"
-          secureTextEntry={true}
+          secureTextEntry={showPassword}
+          autoCapitalize="none"
           onChangeText={text => {setPassword(text)}}
+        />
+        <Icon 
+          name="eye"
+          size={16}
+          color={eyeColor}
+          onPress={togglePassword}
         />
       </View>
 
@@ -81,7 +95,8 @@ export default function Register() {
           style={styles.textInput}
           placeholder="Confirm Password"
           textAlignVertical="center"
-          secureTextEntry={true}
+          secureTextEntry={showPassword}
+          autoCapitalize="none"
           onChangeText={text => {setConfirmPassword(text)}}
         />
       </View>
