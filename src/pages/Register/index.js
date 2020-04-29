@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { Creator as authActions } from '../../store/ducks/auth';
+import { Creators as authActions } from '../../store/ducks/auth';
 import { View, Text, TextInput } from 'react-native';
 import * as firebase from 'firebase';
 import Button from '../../component/Button';
@@ -30,7 +30,7 @@ export default function Register() {
   }
 
   function registerUser() {
-    if(!checkPasswords) {
+    if(!checkPasswords()) {
       setPasswordError('As senhas digitadas não coincidem!');
       return ;
     }

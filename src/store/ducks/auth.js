@@ -5,17 +5,15 @@ export const Types = {
   LOGOUT: "auth/LOGOUT",
 };
 
-const INITIAL_STATE = {
-  isSigned: false,
-};
+const INITIAL_STATE = false;
 
 export default function auth(state = INITIAL_STATE, action) {
   switch(action.type) {
     case Types.LOGIN:
-      return state.isSigned = true;
+      return state = true;
     case Types.LOGOUT:
       signOutUser();
-      return state.isSigned = false;
+      return state = false;
     default:
       return state
   }

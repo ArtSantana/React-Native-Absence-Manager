@@ -12,7 +12,7 @@ import ForgotPassword from './pages/ForgotPassword';
 import Register from './pages/Register';
 
 export default function Routes() {
-  const isSigned = useSelector(state => {state.auth});
+  const isSigned = useSelector(state => state.auth);
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{headerShown: false}}>
@@ -24,8 +24,8 @@ export default function Routes() {
           ) : (
             <>
               <Stack.Screen name="Login" component={Login}/>
-              <Stack.Screen name="Register" component={Register}/>            
-              <Stack.Screen name="ForgotPassword" component={ForgotPassword}/>            
+              <Stack.Screen name="Register" component={Register}/> 
+              <Stack.Screen name="ForgotPassword" component={ForgotPassword}/> 
             </>
           )
         }
