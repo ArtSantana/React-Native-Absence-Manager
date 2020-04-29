@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { Creator as authActions } from '../../store/ducks/auth';
 import { View, Text, TextInput } from 'react-native';
+import * as firebase from 'firebase';
 import Button from '../../component/Button';
 import Icon from 'react-native-vector-icons/Fontisto';
 import styles from './styles';
@@ -10,12 +13,15 @@ export default function Register() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(true);
+  const [passwordError, setPasswordError] = useState('');
   const [error, setError] = useState('');
   const [eyeColor, setEyeColor] = useState('#C7C7CD');
-  const [showPassword, setShowPassword] = useState(true);
-  
+
+  const dispatch = useDispatch();
+
   function checkPasswords() {
-    
+    return password === confirmPassword ? true : false;
   }
 
   function togglePassword() {
@@ -23,11 +29,26 @@ export default function Register() {
     setShowPassword(!showPassword);
   }
 
+  function registerUser() {
+    if(!checkPasswords) {
+      setPasswordError('As senhas digitadas não coincidem!');
+      return ;
+    }
+
+    firebase
+      .auth()
+      .createUserWithEmailAndPassword(email, password)
+      .then(() => {
+        dispatch(authActions.login());
+      })
+      .catch(error => setError(error.message))
+  }
+
   return (
     <View style={styles.container}>
 
       <Text style={styles.register}>Register</Text>
-
+      <Text style={styles.error}>{error}</Text>
       <View style={styles.viewInput}>
         <Icon 
           name="person" 
@@ -100,11 +121,12 @@ export default function Register() {
           onChangeText={text => {setConfirmPassword(text)}}
         />
       </View>
-      <Text>{error}</Text>
+      <Text style={styles.error}>{passwordError}</Text>
       <View style={styles.button}>
         <Button 
           text="Sign Up"
           color="#AF52DE"
+          onPress={registerUser}
         />
       </View>
     </View>

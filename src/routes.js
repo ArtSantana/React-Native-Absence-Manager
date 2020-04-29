@@ -1,5 +1,6 @@
 import 'react-native-gesture-handler';
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
@@ -11,7 +12,7 @@ import ForgotPassword from './pages/ForgotPassword';
 import Register from './pages/Register';
 
 export default function Routes() {
-  const isSigned = false;
+  const isSigned = useSelector(state => {state.auth});
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{headerShown: false}}>

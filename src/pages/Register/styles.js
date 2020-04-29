@@ -40,5 +40,9 @@ export default StyleSheet.create({
   button: {
     width: '100%',
     marginTop: 32
+  },
+
+  error: {
+    color: 'red',
   }
 })
