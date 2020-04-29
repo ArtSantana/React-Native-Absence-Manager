@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity } from 'react-native';
+import { useDispatch } from 'react-redux';
+import { Creators as authActions } from '../../store/ducks/auth';
 import Button from '../../component/Button';
 import Icon from 'react-native-vector-icons/Fontisto';
 import { useNavigation } from '@react-navigation/native';
@@ -13,6 +15,8 @@ export default function Login() {
   const [error, setError] = useState('');
   const [eyeColor, setEyeColor] = useState('#C7C7CD');
   const [showPassword, setShowPassword] = useState(true);
+
+  const dispatch = useDispatch();
 
   function navigateSignUp() {
     navigation.navigate('Register');
@@ -31,7 +35,7 @@ export default function Login() {
     firebase
       .auth()
       .signInWithEmailAndPassword(email, password)
-      .then(() => {})
+      .then(() => dispatch(authActions.login()))
       .catch(error => setError(error.message))
   }
 
