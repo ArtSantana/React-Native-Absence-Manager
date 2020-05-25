@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import {StyleSheet} from 'react-native';
 
 export default StyleSheet.create({
   container: {
@@ -7,8 +7,10 @@ export default StyleSheet.create({
 
   header: {
     justifyContent: 'space-between',
+    flexDirection: 'row',
     alignItems: 'center',
     backgroundColor: '#AF52DE',
+    paddingHorizontal: 8,
   },
 
   title: {
@@ -16,4 +18,11 @@ export default StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 28,
   },
-})
+
+  plusIcon: {
+    position: 'absolute',
+    bottom: 0,
+    alignSelf: 'center',
+    marginBottom: 16,
+  },
+});
